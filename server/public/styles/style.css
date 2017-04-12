@@ -1,8 +1,13 @@
 body {
   padding: 50px;
+  width: 600px;
 }
 
 .pizza_nav > ul > li {
   width: 100px;
   display: inline-block;
+}
+.orderButtons {
+  float: right;
+  width:200px;
 }

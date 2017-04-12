@@ -1,11 +1,18 @@
 
 <div class="container">
   <div class="orders">
-    <div ng-repeat="order in order.pizzaOrderObject.orders">
+    <div ng-repeat="pizzaOrder in order.pizzaOrderObject.orders">
       <div class="item">
-          <span><i>size: </i>{{order.size}}</span>
+          <span><i>size: </i>{{pizzaOrder.size}}</span>
           <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <span><i>topping: </i>{{order.topping}}</span>
+          <span><i>topping: </i>{{pizzaOrder.topping}}</span>
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span><i>price: </i>{{pizzaOrder.price}}</span>
+      </div>
+      <div class="orderButtons">
+        <button type="button" ng-click="">Confirm</button>
+        <button type="button" ng-click="order.remove(pizzaOrder)">Delete</button>
+
       </div>
     </div>
   </div>
