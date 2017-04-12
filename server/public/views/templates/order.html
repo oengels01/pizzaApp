@@ -1,1 +1,12 @@
-<p>Order view</p>
+
+<div class="container">
+  <div class="orders">
+    <div ng-repeat="order in order.pizzaOrderObject.orders">
+      <div class="item">
+          <span><i>size: </i>{{order.size}}</span>
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span><i>topping: </i>{{order.topping}}</span>
+      </div>
+    </div>
+  </div>
+</div>
