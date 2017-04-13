@@ -9,16 +9,16 @@ myApp.factory('PizzaService', function() {
     orders : [],
 
   };
+
   var confirmedPizzaObject = {
     orders: [],
     total: Number
   };
+
   confirmedPizzaObject.total= 0;
 
   var getPrice = function(order) {
     var price = 0;
-    console.log('in getPrice');
-    console.log("order is", order);
     switch (order.size) {
       case 'small':
           price += smallPrice;
@@ -31,42 +31,50 @@ myApp.factory('PizzaService', function() {
         break;
       default:
     }
-
     if (order.topping) {
       price += toppingsPrice;
     }
-    console.log('price is',price);
-
     return price;
   };
 
-
-
   var submitOrder = function(order) {
     order.price = getPrice(order);
-    console.log("pushing ",order);
     pizzaOrderObject.orders.push(order);
-    console.log("Array of orders is: ", pizzaOrderObject.orders);
   };
 
-var deleteItem = function(order){
-  console.log('Delete item' , order);
-  var index = pizzaOrderObject.orders.indexOf(order);
-  console.log(index);
-  pizzaOrderObject.orders.splice(index,1);
-  console.log(pizzaOrderObject.orders);
-};
+  var deleteItem = function(order){
+    // console.log('Delete item' , order);
+    var index = pizzaOrderObject.orders.indexOf(order);
+    pizzaOrderObject.orders.splice(index,1);
+  };
 
-var confirmItem = function(order){
-  console.log('confirm item' , order.price);
-  confirmedPizzaObject.orders.push(order);
-  confirmedPizzaObject .total += order.price;
-  console.log('total' + confirmedPizzaObject.total);
-};
+  var confirmItem = function(order){
+    // console.log('confirm item' , order.price);
+    confirmedPizzaObject.orders.push(order);
+    confirmedPizzaObject.total += order.price;
+    // console.log('total' + confirmedPizzaObject.total);
+    //to delele from the orderview
+    var index = pizzaOrderObject.orders.indexOf(order);
+    pizzaOrderObject.orders.splice(index,1);
+    console.log('confirm item=' , pizzaOrderObject.orders);
+  };
+
+  var confirmAll = function() {
+    // console.log('confirming all, number of pizzas is: ' + pizzaOrderObject.orders.length);
+    for (var j = 0; j < pizzaOrderObject.orders.length; j++) {
+      confirmedPizzaObject.orders.push(pizzaOrderObject.orders[j]);
+    }
+    confirmedPizzaObject.total = 0;
+    for (var i = 0; i < confirmedPizzaObject.orders.length; i++) {
+      confirmedPizzaObject.total += confirmedPizzaObject.orders[i].price;
+    }
+    pizzaOrderObject.orders = [];
+  };
 
   return {
     pizzaOrderObject: pizzaOrderObject,
     confirmedPizzaObject: confirmedPizzaObject,
+    confirmAll:confirmAll,
     submitOrder: submitOrder,
     deleteItem : deleteItem,
     confirmItem: confirmItem

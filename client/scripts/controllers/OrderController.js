@@ -13,4 +13,8 @@ myApp.controller('OrderController',['PizzaService', function(PizzaService) {
     PizzaService.confirmItem(order);
   };
 
+  order.confirmAll = function(){
+    PizzaService.confirmAll();
+  };
+
 }]);
