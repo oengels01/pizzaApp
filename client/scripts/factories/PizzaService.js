@@ -66,6 +66,7 @@ var confirmItem = function(order){
 
   return {
     pizzaOrderObject: pizzaOrderObject,
+    confirmedPizzaObject: confirmedPizzaObject,
     submitOrder: submitOrder,
     deleteItem : deleteItem,
     confirmItem: confirmItem

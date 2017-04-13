@@ -1,0 +1,18 @@
+
+<div class="container">
+  <div class="confirm">
+    <div ng-repeat="pizzaConfirm in confirm.confirmedPizzaObject.orders track by $index">
+      <div class="item">
+          <span><i>size: </i>{{pizzaConfirm.size}}</span>
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span><i>topping: </i>{{pizzaConfirm.topping}}</span>
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span><i>price: </i>{{pizzaConfirm.price}}</span>
+      </div>
+    </div>
+    <div>
+      <span><b>total:</b></span><span>{{confirm.confirmedPizzaObject.total}}</span>
+    </div>
+
+  </div>
+</div>

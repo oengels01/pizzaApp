@@ -12,6 +12,11 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller : 'OrderController',
       controllerAs : 'order'
     })
+    .when('/confirm',{
+      templateUrl : 'views/templates/confirm.html',
+      controller : 'ConfirmController',
+      controllerAs : 'confirm'
+    })
     .otherwise({
       redirectTo: 'menu'
     });
