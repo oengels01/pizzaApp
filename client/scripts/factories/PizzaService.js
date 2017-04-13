@@ -6,8 +6,14 @@ myApp.factory('PizzaService', function() {
   toppingsPrice = 1;
 
   var pizzaOrderObject = {
-    orders : []
+    orders : [],
+
   };
+  var confirmedPizzaObject = {
+    orders: [],
+    total: Number
+  };
+  confirmedPizzaObject.total= 0;
 
   var getPrice = function(order) {
     var price = 0;
@@ -34,6 +40,8 @@ myApp.factory('PizzaService', function() {
     return price;
   };
 
+
+
   var submitOrder = function(order) {
     order.price = getPrice(order);
     console.log("pushing ",order);
@@ -49,10 +57,17 @@ var deleteItem = function(order){
   console.log(pizzaOrderObject.orders);
 };
 
+var confirmItem = function(order){
+  console.log('confirm item' , order.price);
+  confirmedPizzaObject.orders.push(order);
+  confirmedPizzaObject .total += order.price;
+  console.log('total' + confirmedPizzaObject.total);
+};
 
   return {
     pizzaOrderObject: pizzaOrderObject,
     submitOrder: submitOrder,
-    deleteItem : deleteItem
+    deleteItem : deleteItem,
+    confirmItem: confirmItem
   };
 });

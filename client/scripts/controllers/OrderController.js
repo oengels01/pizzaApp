@@ -4,8 +4,13 @@ myApp.controller('OrderController',['PizzaService', function(PizzaService) {
 
   order.pizzaOrderObject = PizzaService.pizzaOrderObject;
   order.remove = function(order){
-console.log('Order in controllerOder' , order);
+    console.log('Order in controllerOder' , order);
     PizzaService.deleteItem(order);
+  };
+
+  order.confirm = function(order){
+    console.log('Confirm in controllerOder' , order);
+    PizzaService.confirmItem(order);
   };
 
 }]);
